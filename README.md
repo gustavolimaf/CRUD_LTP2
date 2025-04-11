@@ -1,126 +1,99 @@
-# CRUD de Gerenciamento de Estoque com SQLite
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![SQLite](https://img.shields.io/badge/SQLite-3-green)](https://www.sqlite.org/index.html)
+# 🛠 CRUD de Estoque em Python - Gestão Simples pra Quem Precisa Botar a Mão na Massa
 
-Projeto desenvolvido para a disciplina **Lógica e Técnicas de Programação 2** do Centro Universitário de Brasília (UniCEUB).
+Olá! Esse projetinho foi criado durante a disciplina de Lógica e Técnicas de Programação 2 no UniCEUB. É um sistema básico de estoque que fiz enquanto aprendia na prática como integrar Python com bancos de dados.
 
----
+👉 Traduzindo: Você pode cadastrar produtos, ver a lista completa, atualizar informações e excluir itens - tudo pelo terminal, de um jeito que até quem não é tech-friendly consegue usar.
 
-## 📝 Descrição  
-Sistema de gerenciamento de estoque que permite operações **CRUD** (Criar, Ler, Atualizar, Deletar) utilizando Python e SQLite. O foco está em boas práticas de programação, modularidade e tratamento robusto de erros.
 
----
+## Como Faz Para Rodar isso?
 
-## 🚀 Funcionalidades  
-- **Banco de dados automático:** Criação e configuração inicial das tabelas  
-- **Cadastro de produtos:** Nome único, quantidade e preço + validação de dados  
-- **Listagem completa:** Visualização organizada de todos os produtos  
-- **Atualização flexível:** Modificação de quantidade e preço por ID  
-- **Exclusão segura:** Remoção de produtos com confirmação  
-- **Interface CLI intuitiva:** Menu interativo em linha de comando  
-- **Sistema robusto:** Tratamento de erros e validação de entradas  
-
----
-
-## ⚙️ Instalação  
-1. Clone o repositório:  
-   ```bash  
-   git clone https://github.com/gustavolimaf/CRUD_LTP2.git  
-   ```
-2. Acesse a pasta do projeto:
-   ```bash
-   cd CRUD_LTP2  
-   ```
-3. Execute o programa:
-   ```bash
-   python main.py  
-   ```
-
----
-
-## 🖥 Como Utilizar  
-Ao executar o programa, você verá um menu interativo:
+1 - Primeiro, clone o repositório em seu PC:
 
 ```bash
-1 - Cadastrar novo produto  
-2 - Listar todos os produtos  
-3 - Atualizar produto  
-4 - Excluir produto  
-5 - Sair  
+  git clone https://github.com/gustavolimaf/CRUD_LTP2.git
 ```
-Siga as instruções no terminal para cada operação.
+    
+2 - Entre na pasta do projeto:
 
----
-
-## 📋 Exemplos de Uso  
-
-### Cadastro de Produto:
 ```bash
-Nome: Caneta  
-Quantidade: 50  
-Preço: 1.20  
-→ Produto cadastrado com sucesso!  
+    cd CRUD_LTP2    
 ```
 
-### Tentativa de Cadastro Duplicado:
+3 - Coloque para rodar!
+
 ```bash
-Nome: Caneta  
-→ Erro: Este produto já está cadastrado!  
+    pyhon main.pyhon
 ```
 
-### Atualização de Produto:
+Pronto! O sistema já cria o banco de dados automaticamente na primeira execução.
+
+
+
+## Funcionalidades
+
+- **Cadastro Inteligente:** Não deixa você repetir nome de produto;
+
+- **Controle Total:** Ajusta quantidades e preços na hora, só precisando do ID do item;
+
+- **Lista Organizada:** Mostra tudo bonitinho numa tabela fácil de ler;
+
+- **Exclusão com Confirmação:** Para ninguém apagar coisa sem querer;
+
+- **Anti-Burrice:** Valida se você tá digitando número onde é preço, quantidade certa, etc.
+
+
+## Exemplo da Vida Real
+
+Imagine que você é responsável pelo controle de estoque de uma papelaria:
+
+### Cadastrando
+
 ```bash
-ID do produto: 1  
-Nova quantidade: 45  
-Novo preço: 1.30  
-→ Produto atualizado com sucesso!  
+    Nome: Caderno Universitário
+    Quantidade: 30
+    Preço: 18.90
 ```
+Output: "Produto cadastrado!"
 
-### Exclusão de Produto:
+### Tentando repetir:
+
 ```bash
-ID para excluir: 1  
-→ Produto excluído com sucesso!  
+    Nome: Caderno Universitário
 ```
+Output: "Opa, esse já existe! Vê outro nome aí..."
 
----
+### Atualizando estoque:
 
-## 🛠 Tecnologias Utilizadas  
-- **Python 3.8+**  
-- **SQLite3 (biblioteca padrão)**  
+```bash
+    ID: 3
+    Nova Quantidade: 25
+    Novo Preço: 19.75
+```
+Output: "Atualizado! O sistema já reflete o novo preço."
+## Por Baixo Dos Panos
 
----
+**Python 3.8+:** Testado até na versão 3.12
 
-## 👥 Equipe  
-- **Desenvolvedor:** Gustavo Lima  
+**SQLite:** O banco de dados fica num arquivo .db local)
 
----
+**Tabulate:** Para deixar as tabelas bonitinhas no terminal
 
-## 📜 Licença  
-Projeto desenvolvido para fins educacionais sob orientação do UniCEUB.  
-Livre para uso acadêmico e aprendizado pessoal.
+## Desafios
 
----
+- **Nomes Duplicados:** Quase uma tarde até descobrir o UNIQUE CONSTRAINT do SQLite
 
-## 🧩 Estrutura do Código & Desafios  
+- **Rollback Salvador:** Aprendi do jeito hard que transações (commit/rollback) evitam dados corrompidos
 
-### Principais Características:
-- Modularização das funções CRUD  
-- Conexão centralizada com o banco de dados  
-- Validação rigorosa de inputs  
-- Tratamento de exceções com `try/except`  
+- **CLI Amigável:** Formatando tabelas para não ficar aquela lista feia de tuplas
 
-### Desafios Superados:
-| Desafio | Solução |
-|---------|----------|
-| Nomes duplicados | UNIQUE CONSTRAINT + tratamento de exceções |
-| Integridade dos dados | Uso de transações (commit/rollback) |
-| Interface amigável | Formatação de tabelas e mensagens claras |
-| Compatibilidade | Testes em múltiplas versões do Python |
+- **Compatibilidade:** Testar em 3 versões diferentes do Python para garantir que rodava nos PCs da faculdade
+## Conclusão
 
-Desenvolvido como requisito da disciplina **LTP2** do **UniCEUB**.
+Esse código foi feito exclusivamente para fins acadêmicos, mas fique à vontade para:
 
----
+- Usar como base para seus projetos
 
-🔝 [Voltar ao topo](#crud-de-gerenciamento-de-estoque-com-sqlite)
+-  Melhorar o tratamento de erros (tenho certeza que tem edge cases que não peguei)
 
+- Adicionar novas features (tipo busca por nome ou relatórios)
